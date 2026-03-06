@@ -1,0 +1,16 @@
+{
+  "name": "memorias-de-incendio",
+  "version": "1.0.0",
+  "main": "check_docx.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "docx": "^8.5.0",
+    "playwright": "^1.58.2"
+  }
+}
