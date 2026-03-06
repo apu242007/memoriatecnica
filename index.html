@@ -787,30 +787,8 @@ h1, h2, h3, h4 { font-family: 'Crimson Pro', 'Source Serif 4', Georgia, serif; c
 #salidasTable th:nth-child(4) { width: 130px }
 #salidasTable th:nth-child(5) { width: 50px }
 #salidasTable th:nth-child(6) { width: 50px }
-#salidasTable th:nth-child(7) { width: 70px }
-#salidasTable th:nth-child(8) { width: 80px }
-#salidasTable th:nth-child(9) { width: 35px }
-#brigadaTable th:last-child { width: 35px }
-
-#alarmaSonoraDetails, #detectoresHumoDetails, #ilumEmergDetails,
-#rociadoresDet, #bieDet, #hidranteDet, #gasDet, #gabinetesDet,
-#centralAlarmaMarca, #capacitacionFechaGroup, #salidasWarnings,
 #pdfPreviewContainer, #tabPlanoPdf, #tabFotos,
 #pdfUploadInput, #photosInput { display: none }
-#alarmaVisualQty, #tempQty { display: none; width: 80px }
-#alarmaSirenas, #ilumQty, #rociadoresQty { width: 100px }
-#humoQty, #bieQty, #hidranteQty, #gabinetesQty { width: 80px }
-
-#procedimientoEvacuacion {
-  width: 100%; font-size: 0.88rem; font-family: inherit;
-  padding: 0.75rem; border: 1.5px solid var(--border);
-  border-radius: 6px; line-height: 1.7;
-}
-#croquisPreviewArea {
-  text-align: center; padding: 1rem; background: var(--bg);
-  border-radius: var(--radius); min-height: 200px;
-}
-#croquisPreviewArea > p { color: var(--text-light) }
 #pdfPreviewContainer > div:first-child {
   display: flex; justify-content: space-between;
   align-items: center; margin-bottom: 0.5rem;
@@ -1219,8 +1197,8 @@ h1, h2, h3, h4 { font-family: 'Crimson Pro', 'Source Serif 4', Georgia, serif; c
 <!-- ==================== STEP 4 ==================== -->
 <section class="step-section" id="step4">
   <div class="section-header">
-    <h2>Paso 4 — Plan de Emergencia y Evacuación</h2>
-    <p>Complete los datos del plan de emergencia del establecimiento.</p>
+    <h2>Paso 4 — Señalización y Firmas</h2>
+    <p>Complete los datos de señalización y firme el documento.</p>
   </div>
 
   <div class="card">
@@ -1243,270 +1221,7 @@ h1, h2, h3, h4 { font-family: 'Crimson Pro', 'Source Serif 4', Georgia, serif; c
     </div>
   </div>
 
-  <div class="card">
-    <div class="card-title"><span class="icon">🧯</span> B) Inventario de Extintores</div>
-    <p class="helper-text">Ingrese cada extintor presente en el establecimiento con su ubicación, tipo y fechas de vencimiento.</p>
-    <div class="table-scroll">
-      <table class="data-table" id="extintoresTable">
-        <thead>
-          <tr>
-            <th>Sector / Ubicación</th>
-            <th>Tipo</th>
-            <th>Capacidad</th>
-            <th>Potencial</th>
-            <th>Clase Fuego</th>
-            <th>Dist.(m)</th>
-            <th>Vcto. Recarga</th>
-            <th>Vcto. Prueba Hidr.</th>
-            <th>Observaciones</th>
-            <th></th>
-          </tr>
-        </thead>
-        <tbody id="extintoresBody"></tbody>
-      </table>
-    </div>
-    <button type="button" class="btn-add" onclick="addExtintorRow()">+ Agregar Extintor</button>
-    <div class="total-display" id="extintoresTotal">Total: 0 extintor(es)</div>
-    <div class="normative-box">
-      Instalados conforme IRAM 3517/2 e IRAM 3546. Altura: entre 1,20 m y 1,50 m del suelo. Control de presurización cada 3 meses. Prueba hidráulica cada 5 años.
-    </div>
-  </div>
 
-  <div class="card">
-    <div class="card-title"><span class="icon">🚪</span> C) Salidas y Medios de Escape</div>
-    <p class="helper-text">Registre cada salida del establecimiento. Las puertas deben abrir en sentido de evacuación.</p>
-    <div class="table-scroll">
-      <table class="data-table" id="salidasTable">
-        <thead>
-          <tr>
-            <th>Denominación</th>
-            <th>Ubicación</th>
-            <th>Ancho (m)</th>
-            <th>Tipo apertura</th>
-            <th>Señal.</th>
-            <th>Ilum.</th>
-            <th>Dist.(m)</th>
-            <th>Estado</th>
-            <th></th>
-          </tr>
-        </thead>
-        <tbody id="salidasBody"></tbody>
-      </table>
-    </div>
-    <button type="button" class="btn-add" onclick="addSalidaRow()">+ Agregar Salida</button>
-    <div class="total-display" id="salidasUasCalc"></div>
-    <div class="warning-box" id="salidasWarnings"></div>
-  </div>
-
-  <div class="card">
-    <div class="card-title"><span class="icon">🚪</span> H) Evacuación — Zona de Seguridad y Rutas</div>
-    <div class="form-grid">
-      <div class="form-group full-width">
-        <label>Zona de Seguridad / Punto de Reunión <span class="required">*</span></label>
-        <textarea id="zonaSeguridad" placeholder="Ej: Vereda sobre calle San Martín, mínimo a 10 metros de la línea de edificación."></textarea>
-        <span class="error-text">Campo obligatorio</span>
-      </div>
-      <div class="form-group full-width">
-        <label>Descripción de Rutas de Escape <span class="required">*</span></label>
-        <textarea id="rutasEscape" placeholder="Ej: Salida principal por puerta de acceso en planta baja hacia calle San Martín. Salida alternativa por pasillo lateral hacia patio interno."></textarea>
-        <span class="error-text">Campo obligatorio</span>
-      </div>
-      <div class="form-group full-width">
-        <label>Procedimientos Especiales</label>
-        <textarea id="procedimientos" placeholder="Opcional: Describa procedimientos específicos, roles de brigada, etc."></textarea>
-      </div>
-    </div>
-  </div>
-
-  <div class="card">
-    <div class="card-title"><span class="icon">🔔</span> D) Sistema de Alarma e Iluminación de Emergencia</div>
-    <div class="yes-no-group">
-      <label>¿Posee sistema de alarma sonora?</label>
-      <select id="alarmaSonora" onchange="toggleAlarmaDetails(this,'alarmaSonoraDetails')"><option value="No">No</option><option value="Sí">Sí</option></select>
-    </div>
-    <div id="alarmaSonoraDetails" class="sub-details">
-      <input type="text" id="alarmaMarca" placeholder="Marca/Modelo">
-      <input type="number" id="alarmaSirenas" placeholder="Cant. sirenas" min="1">
-      <select id="alarmaActivacion"><option>Manual</option><option>Automática por detector</option><option>Manual + Automática</option></select>
-    </div>
-    <div class="yes-no-group">
-      <label>¿Posee alarma visual (luces estroboscópicas)?</label>
-      <select id="alarmaVisual" onchange="toggleAlarmaDetails(this,'alarmaVisualQty')"><option value="No">No</option><option value="Sí">Sí</option></select>
-      <input type="number" id="alarmaVisualQty" placeholder="Cantidad" min="1">
-    </div>
-    <div class="yes-no-group">
-      <label>¿Posee central de alarma contra incendio?</label>
-      <select id="centralAlarma" onchange="toggleAlarmaDetails(this,'centralAlarmaMarca')"><option value="No">No</option><option value="Sí">Sí</option></select>
-      <input type="text" id="centralAlarmaMarca" placeholder="Marca/Modelo">
-    </div>
-    <div class="yes-no-group">
-      <label>¿Posee detectores de humo?</label>
-      <select id="detectoresHumo" onchange="toggleAlarmaDetails(this,'detectoresHumoDetails')"><option value="No">No</option><option value="Sí">Sí</option></select>
-    </div>
-    <div id="detectoresHumoDetails" class="sub-details">
-      <input type="number" id="humoQty" placeholder="Cantidad" min="1">
-      <select id="humoTipo"><option>Iónicos</option><option>Ópticos</option><option>Mixtos</option></select>
-      <input type="text" id="humoUbicaciones" placeholder="Ubicaciones (cocina, pasillo, depósito)">
-    </div>
-    <div class="yes-no-group">
-      <label>¿Posee detectores de temperatura?</label>
-      <select id="detectoresTemp" onchange="toggleAlarmaDetails(this,'tempQty')"><option value="No">No</option><option value="Sí">Sí</option></select>
-      <input type="number" id="tempQty" placeholder="Cantidad" min="1">
-    </div>
-    <div class="yes-no-group">
-      <label>Iluminación de emergencia autónoma</label>
-      <select id="ilumEmerg" onchange="toggleAlarmaDetails(this,'ilumEmergDetails')"><option value="No">No</option><option value="Sí">Sí</option></select>
-    </div>
-    <div id="ilumEmergDetails" class="sub-details">
-      <input type="number" id="ilumQty" placeholder="Cantidad artefactos" min="1">
-      <input type="text" id="ilumAutonomia" value="90 minutos" placeholder="Autonomía mínima">
-      <input type="text" id="ilumMarca" placeholder="Marca">
-    </div>
-    <div class="yes-no-group">
-      <label>¿Posee grupo electrógeno de emergencia?</label>
-      <select id="grupoElectrogeno"><option value="No">No</option><option value="Sí">Sí</option></select>
-    </div>
-  </div>
-
-  <div class="card">
-    <div class="card-title"><span class="icon">🔧</span> E) Instalaciones Especiales contra Incendio</div>
-    <div class="inst-row">
-      <div class="yes-no-group"><label>¿Posee rociadores automáticos (sprinklers)?</label><select id="rociadores" onchange="toggleInstDetails(this,'rociadoresDet')"><option value="No">No</option><option value="Sí">Sí</option></select></div>
-      <div id="rociadoresDet" class="sub-details">
-        <input type="number" id="rociadoresQty" placeholder="Cant. cabezas">
-        <input type="text" id="rociadoresCobertura" placeholder="Cobertura m²">
-        <input type="text" id="rociadoresNorma" placeholder="Norma (IRAM/NFPA)">
-      </div>
-    </div>
-    <div class="inst-row">
-      <div class="yes-no-group"><label>¿Posee boca de incendio equipada (BIE)?</label><select id="bie" onchange="toggleInstDetails(this,'bieDet')"><option value="No">No</option><option value="Sí">Sí</option></select></div>
-      <div id="bieDet" class="sub-details">
-        <input type="number" id="bieQty" placeholder="Cantidad">
-        <input type="text" id="bieUbicacion" placeholder="Ubicación">
-        <select id="bieDiametro"><option>25mm</option><option>45mm</option><option>65mm</option></select>
-      </div>
-    </div>
-    <div class="inst-row">
-      <div class="yes-no-group"><label>¿Posee hidrante exterior?</label><select id="hidrante" onchange="toggleInstDetails(this,'hidranteDet')"><option value="No">No</option><option value="Sí">Sí</option></select></div>
-      <div id="hidranteDet" class="sub-details">
-        <input type="number" id="hidranteQty" placeholder="Cantidad">
-        <input type="text" id="hidranteUbicacion" placeholder="Ubicación">
-        <input type="text" id="hidranteDistancia" placeholder="Distancia al edificio">
-      </div>
-    </div>
-    <div class="inst-row">
-      <div class="yes-no-group"><label>¿Posee sistema de gas de supresión?</label><select id="gasSupresion" onchange="toggleInstDetails(this,'gasDet')"><option value="No">No</option><option value="Sí">Sí</option></select></div>
-      <div id="gasDet" class="sub-details">
-        <input type="text" id="gasAgente" placeholder="Agente (CO2, FM-200, NOVEC)">
-        <input type="text" id="gasSectores" placeholder="Sectores protegidos">
-      </div>
-    </div>
-    <div class="inst-row">
-      <div class="yes-no-group"><label>¿Posee gabinetes contra incendio?</label><select id="gabinetes" onchange="toggleInstDetails(this,'gabinetesDet')"><option value="No">No</option><option value="Sí">Sí</option></select></div>
-      <div id="gabinetesDet" class="sub-details">
-        <input type="number" id="gabinetesQty" placeholder="Cantidad">
-        <input type="text" id="gabinetesUbicacion" placeholder="Ubicación">
-        <input type="text" id="gabinetesEquip" placeholder="Equipamiento (manguera/lanza/llave)">
-      </div>
-    </div>
-  </div>
-
-  <div class="card">
-    <div class="card-title"><span class="icon">🧑‍🚒</span> F) Brigada de Emergencias</div>
-    <p class="helper-text">Designe los responsables del plan de emergencia. Si el establecimiento no cuenta con brigada formal, al menos indique un responsable.</p>
-    <div class="form-grid">
-      <div class="form-group">
-        <label>Jefe de Brigada — Nombre</label>
-        <input type="text" id="brigadaJefe" placeholder="Nombre y Apellido">
-      </div>
-      <div class="form-group">
-        <label>Jefe de Brigada — Teléfono</label>
-        <input type="text" id="brigadaTelefono" placeholder="Ej: 0341-1234567">
-      </div>
-      <div class="form-group">
-        <label>Jefe de Brigada — Turno</label>
-        <select id="jefeTurno"><option>Mañana</option><option>Tarde</option><option>Noche</option><option>Full time</option></select>
-      </div>
-      <div class="form-group">
-        <label>Suplente — Nombre</label>
-        <input type="text" id="suplenteNombre" placeholder="Nombre y Apellido">
-      </div>
-      <div class="form-group">
-        <label>Suplente — Teléfono</label>
-        <input type="tel" id="suplenteTel" placeholder="Teléfono">
-      </div>
-      <div class="form-group">
-        <label>Bomberos más cercanos</label>
-        <input type="text" id="bomberosContacto" placeholder="Ej: Bomberos Voluntarios Tel. 100">
-      </div>
-      <div class="form-group">
-        <label>Emergencias médicas</label>
-        <input type="text" id="emergMedContacto" placeholder="Ej: SAME 107 / Servicio médico privado">
-      </div>
-    </div>
-
-    <div class="card-title mt-1"><span class="icon">👥</span> Integrantes de la Brigada</div>
-    <div class="table-scroll">
-      <table class="data-table" id="brigadaTable">
-        <thead><tr><th>Nombre</th><th>Rol</th><th>Turno</th><th>Teléfono</th><th></th></tr></thead>
-        <tbody id="brigadaBody"></tbody>
-      </table>
-    </div>
-    <button type="button" class="btn-add" onclick="addBrigadaRow()">+ Agregar Integrante</button>
-
-    <div class="form-grid mt-1">
-      <div class="form-group">
-        <label>Frecuencia de simulacros</label>
-        <select id="simulacrosFreq"><option>Semestral</option><option>Anual</option><option>Bianual</option></select>
-      </div>
-      <div class="form-group">
-        <label>Fecha último simulacro</label>
-        <input type="date" id="simulacroUltimo">
-      </div>
-      <div class="form-group">
-        <label>Fecha próximo simulacro</label>
-        <input type="date" id="simulacroProximo">
-      </div>
-      <div class="form-group">
-        <label>¿Personal capacitado en uso de extintores?</label>
-        <select id="capacitacionExt" onchange="toggleCapacitacionFecha()"><option value="No">No</option><option value="Sí">Sí</option></select>
-      </div>
-      <div class="form-group" id="capacitacionFechaGroup">
-        <label>Fecha última capacitación</label>
-        <input type="date" id="capacitacionFecha">
-      </div>
-    </div>
-  </div>
-
-  <div class="card">
-    <div class="card-title"><span class="icon">📋</span> G) Procedimiento de Evacuación</div>
-    <p class="helper-text">Texto pre-cargado conforme normativa. Puede editar según las características del establecimiento.</p>
-    <textarea id="procedimientoEvacuacion" rows="14"></textarea>
-    <button type="button" class="btn btn-secondary mt-half" onclick="resetProcedimiento()">↺ Restaurar texto estándar</button>
-  </div>
-
-  <div class="card">
-    <div class="card-title"><span class="icon">📐</span> Croquis del Establecimiento</div>
-    <p class="helper-text">Dibuje un croquis esquemático indicando sectores, extintores (🧯), salidas (🚪) y rutas de escape (→). Se incluirá como imagen en el documento.</p>
-    <div class="croquis-container">
-      <canvas id="croquisCanvas" class="croquis-canvas" width="800" height="320"></canvas>
-    </div>
-    <div class="croquis-toolbar">
-      <button onclick="setCroquisTool('pen')" class="active" id="toolPen">✏️ Lápiz</button>
-      <button onclick="setCroquisTool('line')">📏 Línea</button>
-      <button onclick="setCroquisTool('rect')">⬜ Rectángulo</button>
-      <button onclick="setCroquisTool('text')">Aa Texto</button>
-      <span class="croquis-separator"></span>
-      <span class="color-swatch active" data-color="#1a2744" onclick="setCroquisColor(this)"></span>
-      <span class="color-swatch" data-color="#c0392b" onclick="setCroquisColor(this)"></span>
-      <span class="color-swatch" data-color="#27ae60" onclick="setCroquisColor(this)"></span>
-      <span class="color-swatch" data-color="#2980b9" onclick="setCroquisColor(this)"></span>
-      <span class="color-swatch" data-color="#f39c12" onclick="setCroquisColor(this)"></span>
-      <span class="croquis-separator"></span>
-      <button onclick="undoCroquis()">↩ Deshacer</button>
-      <button onclick="clearCroquis()">🗑 Limpiar</button>
-    </div>
-  </div>
 
   <div class="card">
     <div class="card-title"><span class="icon">✍️</span> Firmas Digitales</div>
@@ -1544,22 +1259,8 @@ h1, h2, h3, h4 { font-family: 'Crimson Pro', 'Source Serif 4', Georgia, serif; c
 
   <div class="card">
     <div class="tab-bar">
-      <button class="tab-btn active" onclick="showMultimediaTab('tabCroquis', this)">📐 Croquis</button>
-      <button class="tab-btn" onclick="showMultimediaTab('tabPlanoPdf', this)">📄 Plano PDF</button>
+      <button class="tab-btn active" onclick="showMultimediaTab('tabPlanoPdf', this)">📄 Plano PDF</button>
       <button class="tab-btn" onclick="showMultimediaTab('tabFotos', this)">📷 Fotos</button>
-    </div>
-
-    <!-- CROQUIS TAB -->
-    <div id="tabCroquis" class="tab-content-panel">
-      <p class="helper-text">El croquis del Paso 4 se exportará como imagen en el documento. Aquí tiene una vista previa.</p>
-      <div id="croquisPreviewArea">
-        <p>El croquis se renderizará desde el canvas del Paso 4.</p>
-      </div>
-      <div class="legend">
-        <span>🧯 Extintor</span><span>🟢 Salida emergencia</span>
-        <span>🔔 Alarma</span><span>💡 Luz emergencia</span>
-        <span>📍 Punto de reunión</span><span>➡️ Dirección evacuación</span>
-      </div>
     </div>
 
     <!-- PLANO PDF TAB -->
@@ -1746,15 +1447,7 @@ function validateStep(step) {
     }
   }
 
-  if (step === 4) {
-    ['zonaSeguridad', 'rutasEscape'].forEach(id => {
-      const el = document.getElementById(id);
-      if (!el.value || el.value.trim() === '') {
-        markError(el);
-        valid = false;
-      }
-    });
-  }
+  // Step 4: no required fields beyond signatures
 
   return valid;
 }
@@ -2200,8 +1893,7 @@ function buildPreview() {
     sectors[r.sector] = (sectors[r.sector] || 0) + carga;
   });
 
-  const croquisImg = getCroquisData();
-  const estimatedFojas = 8 + (croquisImg ? 1 : 0) + (c.extDistRows && c.extDistRows.length ? 1 : 0);
+  const estimatedFojas = 8 + (c.extDistRows && c.extDistRows.length ? 1 : 0);
 
   document.getElementById('previewContainer').innerHTML = `
     <div style="text-align:center;margin-bottom:2rem;">
@@ -2249,12 +1941,7 @@ function buildPreview() {
     <p>El establecimiento se ubica en ${escapeHtml(d.domicilio)}. Se trata de una obra ${d.tipoObra.toLowerCase()} de ${d.cantPlantas} planta(s), con una superficie cubierta de ${d.m2Cubiertos} m², superficie no cubierta de ${d.m2NoCubiertos} m², totalizando ${d.supTotal} m². La altura total del edificio es de ${d.alturaEdificio || 'N/D'} metros.</p>
     <p><strong>Características constructivas:</strong> ${escapeHtml(d.materialConstructivo) || 'No especificado.'}</p>
 
-    <h2>III) PLAN DE EMERGENCIA Y EVACUACIÓN</h2>
-    <p><strong>Zona de Seguridad / Punto de Reunión:</strong> ${escapeHtml(d.zonaSeguridad)}</p>
-    <p><strong>Rutas de Escape:</strong> ${escapeHtml(d.rutasEscape)}</p>
-    ${d.procedimientos ? `<p><strong>Procedimientos Especiales:</strong> ${escapeHtml(d.procedimientos)}</p>` : ''}
-
-    <h3>III.1 — Señalización</h3>
+    <h2>III) SEÑALIZACIÓN</h2>
     <table>
       <thead><tr><th>Señal</th><th style="text-align:center">Cantidad</th></tr></thead>
       <tbody>
@@ -2265,38 +1952,6 @@ function buildPreview() {
         ${d.signOtrosDesc ? '<tr><td>' + escapeHtml(d.signOtrosDesc) + '</td><td style="text-align:center">' + (d.signOtrosQty || '-') + '</td></tr>' : ''}
       </tbody>
     </table>
-
-    ${extintorRows.length ? `
-    <h3>III.2 — Inventario de Extintores</h3>
-    <table>
-      <thead><tr><th>Ubicación</th><th>Tipo</th><th>Clase</th><th>Potencial</th><th>Vencimiento</th><th>N° Interno</th></tr></thead>
-      <tbody>${extintorRows.map(r => '<tr><td>' + escapeHtml(r.ubicacion) + '</td><td>' + r.tipo + '</td><td>' + (EXTINTOR_CLASE[r.tipo]||'-') + '</td><td>' + (EXTINTOR_POTENCIAL[r.tipo]||'-') + '</td><td>' + (r.vencimiento||'-') + '</td><td>' + escapeHtml(r.nroInterno) + '</td></tr>').join('')}</tbody>
-    </table>` : ''}
-
-    ${salidaRows.length ? `
-    <h3>III.3 — Salidas y Medios de Escape</h3>
-    <table>
-      <thead><tr><th>Descripción</th><th>Tipo</th><th>Ancho (m)</th><th>Sentido</th><th>Señalizada</th><th>Iluminada</th></tr></thead>
-      <tbody>${salidaRows.map(r => '<tr><td>' + escapeHtml(r.descripcion) + '</td><td>' + r.tipo + '</td><td style="text-align:center">' + (r.ancho||'-') + '</td><td>' + r.sentido + '</td><td style="text-align:center">' + r.senalizada + '</td><td style="text-align:center">' + r.iluminada + '</td></tr>').join('')}</tbody>
-    </table>` : ''}
-
-    <h3>III.4 — Sistema de Alarma e Instalaciones</h3>
-    <p><strong>Alarma Sonora:</strong> ${d.alarmaSonora}${d.alarmaSonora === 'Sí' ? ' — Marca: ' + escapeHtml(d.alarmaMarca) + ', Sirenas: ' + (d.alarmaSirenas||'-') + ', Activación: ' + (d.alarmaActivacion||'-') : ''}</p>
-    <p><strong>Alarma Visual:</strong> ${d.alarmaVisual}${d.alarmaVisual === 'Sí' ? ' — Cant.: ' + (d.alarmaVisualQty||'-') : ''}</p>
-    <p><strong>Central de Alarma:</strong> ${d.centralAlarma}${d.centralAlarma === 'Sí' ? ' — Marca: ' + escapeHtml(d.centralAlarmaMarca) : ''}</p>
-    <p><strong>Detectores de Humo:</strong> ${d.detectoresHumo}${d.detectoresHumo === 'Sí' ? ' — Cant.: ' + (d.humoQty||'-') + ', Tipo: ' + (d.humoTipo||'-') : ''}</p>
-    <p><strong>Detectores Térmicos:</strong> ${d.detectoresTemp}${d.detectoresTemp === 'Sí' ? ' — Cant.: ' + (d.tempQty||'-') : ''}</p>
-    <p><strong>Iluminación de Emergencia:</strong> ${d.ilumEmerg}${d.ilumEmerg === 'Sí' ? ' — Cant.: ' + (d.ilumQty||'-') + ', Autonomía: ' + (d.ilumAutonomia||'-') + 'h, Marca: ' + escapeHtml(d.ilumMarca) : ''}</p>
-    <p><strong>Grupo Electrógeno:</strong> ${d.grupoElectrogeno}</p>
-    ${d.rociadores === 'Sí' || d.bie === 'Sí' || d.hidrante === 'Sí' || d.gasSupresion === 'Sí' || d.gabinetes === 'Sí' ? `
-    <h4>Instalaciones Especiales</h4>
-    <ul>
-      ${d.rociadores === 'Sí' ? '<li>Rociadores automáticos</li>' : ''}
-      ${d.bie === 'Sí' ? '<li>BIE (Boca de Incendio Equipada)</li>' : ''}
-      ${d.hidrante === 'Sí' ? '<li>Hidrante exterior</li>' : ''}
-      ${d.gasSupresion === 'Sí' ? '<li>Supresión con gas</li>' : ''}
-      ${d.gabinetes === 'Sí' ? '<li>Gabinetes de manguera</li>' : ''}
-    </ul>` : ''}
 
     <h2>IV) MEMORIA TÉCNICA DEL SISTEMA DE INCENDIO</h2>
 
@@ -2347,31 +2002,8 @@ function buildPreview() {
     </table>
     ` : ''}
 
-    <h2>V) BRIGADA Y CONTACTOS DE EMERGENCIA</h2>
-    ${d.brigadaJefe ? `<p><strong>Jefe de Brigada:</strong> ${escapeHtml(d.brigadaJefe)} — Tel: ${escapeHtml(d.brigadaTelefono)}</p>` : ''}
-    ${d.jefeTurno ? `<p><strong>Jefe de Turno:</strong> ${escapeHtml(d.jefeTurno)}</p>` : ''}
-    ${d.suplenteNombre ? `<p><strong>Suplente:</strong> ${escapeHtml(d.suplenteNombre)} — Tel: ${escapeHtml(d.suplenteTel)}</p>` : ''}
-    ${brigadaRows.length ? `
-    <table>
-      <thead><tr><th>Nombre</th><th>Rol</th><th>Teléfono</th></tr></thead>
-      <tbody>${brigadaRows.map(r => '<tr><td>' + escapeHtml(r.nombre) + '</td><td>' + r.rol + '</td><td>' + escapeHtml(r.telefono) + '</td></tr>').join('')}</tbody>
-    </table>` : ''}
-    ${d.simulacrosFreq ? `<p><strong>Simulacros:</strong> ${d.simulacrosFreq} — Último: ${d.simulacroUltimo || '-'} — Próximo: ${d.simulacroProximo || '-'}</p>` : ''}
-    ${d.capacitacionExt === 'Sí' ? `<p><strong>Capacitación en uso de extintores:</strong> Sí — Fecha: ${d.capacitacionFecha || '-'}</p>` : ''}
-    <p><strong>Bomberos:</strong> ${escapeHtml(d.bomberosContacto) || 'Bomberos — Tel. 100'} — <strong>Emergencias Médicas:</strong> ${escapeHtml(d.emergMedContacto) || 'SAME 107'}</p>
-
-    ${d.procedimientoEvacuacion ? `
-    <h3>V.1 — Procedimiento de Evacuación</h3>
-    <pre style="white-space:pre-wrap;font-family:Arial;font-size:0.85rem;background:#f8f9fb;padding:1rem;border-radius:6px;">${escapeHtml(d.procedimientoEvacuacion)}</pre>` : ''}
-
-    ${getCroquisData() ? `
-    <h2>VI) CROQUIS DEL ESTABLECIMIENTO</h2>
-    <img src="${getCroquisData()}" style="width:100%;max-width:700px;border:1px solid #ddd;border-radius:4px;" alt="Croquis del establecimiento">
-    <p style="font-size:0.82rem;color:var(--text-light);">Croquis esquemático indicando sectores, extintores, salidas y rutas de escape.</p>
-    ` : ''}
-
     ${pdfData ? `
-    <h2>${getCroquisData() ? 'VII' : 'VI'}) PLANO DEL ESTABLECIMIENTO</h2>
+    <h2>V) PLANO DEL ESTABLECIMIENTO</h2>
     <p>Se adjunta plano en formato PDF: <strong>${escapeHtml(pdfData.name)}</strong></p>
     ` : ''}
 
@@ -2382,7 +2014,7 @@ function buildPreview() {
     </div>
     ` : ''}
 
-    <h2>RECOMENDACIONES</h2>
+    <h2>VI) RECOMENDACIONES</h2>
     <ul>
       <li>Mantener libres y señalizados todos los medios de escape en todo momento.</li>
       <li>Realizar control y recarga de extintores conforme IRAM 3517/2 e IRAM 3546.</li>
@@ -2392,10 +2024,10 @@ function buildPreview() {
       <li>Colocar señalización conforme IRAM 10005 e IRAM 3599.</li>
     </ul>
 
-    <h2>RESPONSABILIDAD DEL PROPIETARIO</h2>
+    <h2>VII) RESPONSABILIDAD DEL PROPIETARIO</h2>
     <p>El propietario del establecimiento es responsable de cumplir y hacer cumplir las condiciones de protección contra incendios establecidas en la Ley 19.587, Dec. 351/79 y normas complementarias. Asimismo, deberá mantener vigente la habilitación y las condiciones descriptas en la presente memoria técnica.</p>
 
-    <h2>DECLARACIÓN JURADA</h2>
+    <h2>VIII) DECLARACIÓN JURADA</h2>
     <p>El/La que suscribe, <strong>${escapeHtml(d.tecNombre)}</strong>, con título habilitante de <strong>${escapeHtml(d.tecTitulo)}</strong>, Matrícula N° <strong>${escapeHtml(d.tecMatricula)}</strong>, en su carácter de profesional responsable contratado por <strong>${escapeHtml(d.propietario)}</strong>, DECLARA BAJO JURAMENTO que ha relevado personalmente el establecimiento ubicado en <strong>${escapeHtml(d.domicilio)}</strong>, y que los datos consignados en la presente Memoria Técnica Descriptiva de Protección Contra Incendios responden a la realidad según su leal saber y entender, asumiendo la responsabilidad técnica y legal que le compete conforme a la Ley Nacional N° 19.587, Decreto Reglamentario N° 351/79 y toda otra normativa vigente aplicable.</p>
 
     <div style="margin-top:3rem;display:flex;justify-content:space-between;">
@@ -2437,7 +2069,6 @@ async function generateDocx() {
   const fecha = new Date().toLocaleDateString('es-AR');
   const sigTecData = getSignatureData('sigTecnico');
   const sigPropData = getSignatureData('sigPropietario');
-  const croquisData = getCroquisData();
 
   // Helper functions
   const p = (text, opts = {}) => new Paragraph({
@@ -2500,7 +2131,7 @@ async function generateDocx() {
   ];
 
   // Count estimated pages (Carátula + Temario + ~2pp Generalidades + 1p Descripción + 2pp Emergencia + 3pp Memoria Técnica + Croquis + Recomendaciones + Responsabilidad + DJ + Firmas)
-  const estimatedFojas = 8 + (croquisData ? 1 : 0) + (c.extDistRows && c.extDistRows.length ? 1 : 0);
+  const estimatedFojas = 8 + (c.extDistRows && c.extDistRows.length ? 1 : 0);
   caratulaRows.push(['N° Total de Fojas (estimado)', String(estimatedFojas)]);
 
   const borderStyle = { style: BorderStyle.SINGLE, size: 1, color: '999999' };
@@ -2714,12 +2345,7 @@ async function generateDocx() {
           p('      I.1   Introducción'),
           p('      I.2   Objetivos'),
           p('II)   Descripción de la Instalación', { bold: true }),
-          p('III)  Plan de Emergencia y Evacuación', { bold: true }),
-          p('      III.1  Señalización'),
-          p('      III.2  Zona de Seguridad / Punto de Reunión'),
-          p('      III.3  Rutas de Escape'),
-          p('      III.4  Procedimientos ante Emergencia'),
-          p('      III.5  Brigada y Contactos de Emergencia'),
+          p('III)  Señalización', { bold: true }),
           p('IV)   Memoria Técnica del Sistema de Incendio', { bold: true }),
           p('      IV.1   Análisis y Clasificación del Riesgo'),
           p('      IV.2   Carga de Fuego "Qf"'),
@@ -2732,11 +2358,10 @@ async function generateDocx() {
           p('      IV.9   Condiciones Generales y Específicas'),
           p('      IV.10  Boca de Impulsión'),
           p('      IV.11  Distribución de Extintores por Sector'),
-          p('V)    Croquis del Establecimiento', { bold: true }),
-          p('VI)   Recomendaciones', { bold: true }),
-          p('VII)  Responsabilidad del Propietario', { bold: true }),
-          p('VIII) Declaración Jurada', { bold: true }),
-          p('IX)   Firmas', { bold: true }),
+          p('V)    Recomendaciones', { bold: true }),
+          p('VI)   Responsabilidad del Propietario', { bold: true }),
+          p('VII)  Declaración Jurada', { bold: true }),
+          p('VIII) Firmas', { bold: true }),
 
           // === I) GENERALIDADES ===
           new Paragraph({ children: [new PageBreak()] }),
@@ -2753,7 +2378,6 @@ async function generateDocx() {
           p('• Establecer las condiciones de situación, construcción y extinción.'),
           p('• Calcular el factor de ocupación, las unidades de ancho de salida y los medios de escape.'),
           p('• Determinar la cantidad, tipo y distribución de extintores requeridos.'),
-          p('• Proponer un plan de emergencia y evacuación acorde al riesgo.'),
 
           // === II) DESCRIPCIÓN ===
           heading('II) DESCRIPCIÓN DE LA INSTALACIÓN'),
@@ -2762,11 +2386,8 @@ async function generateDocx() {
           pBold('Características constructivas:'),
           p(d.materialConstructivo || 'No especificado.'),
 
-          // === III) PLAN DE EMERGENCIA ===
-          heading('III) PLAN DE EMERGENCIA Y EVACUACIÓN'),
-          p('El Plan de Emergencia y Evacuación tiene como objetivo establecer los procedimientos y acciones que deberán adoptarse ante la ocurrencia de un siniestro (incendio, explosión, escape de gases, etc.), a fin de preservar la integridad física de las personas que se encuentren en el establecimiento y minimizar los daños materiales. Se elabora conforme lo dispuesto por la Ley Nacional N° 19.587, Decreto Reglamentario N° 351/79, Art. 187 y concordantes.'),
-
-          heading('III.1 Señalización', HeadingLevel.HEADING_2),
+          // === III) SEÑALIZACIÓN ===
+          heading('III) SEÑALIZACIÓN'),
           p('La señalización de seguridad se realizará conforme las normas IRAM 10005 Parte 1 (Colores y señales de seguridad) e IRAM 3599 (Señalización para protección contra incendios). Se dispondrán señales en los siguientes puntos:'),
           p('• Ubicación de extintores: señal cuadrada con pictograma blanco sobre fondo rojo, dimensión mínima 210×210 mm.'),
           p('• Salidas y salidas de emergencia: señal rectangular verde con pictograma blanco, dimensión mínima 297×148 mm.'),
@@ -2774,37 +2395,6 @@ async function generateDocx() {
           p('• Tableros eléctricos: señal triangular de "Riesgo Eléctrico" y prohibición de acceso a personal no autorizado.'),
           p('• Pulsadores manuales de alarma (si corresponde): señalización de ubicación con pictograma normalizado.'),
           p('La señalización deberá ser fotoluminiscente o contar con iluminación propia conforme IRAM 10005 Parte 2, de modo que resulte visible en condiciones de oscuridad o humo.'),
-
-          heading('III.2 Zona de Seguridad / Punto de Reunión', HeadingLevel.HEADING_2),
-          p('Se define como zona de seguridad el punto de reunión exterior al edificio, alejado de la línea de edificación, donde las personas evacuadas deben concentrarse para su conteo y asistencia. Este punto debe ser accesible, seguro y estar despejado de vehículos u obstáculos.'),
-          pBold('Punto de reunión designado:'),
-          p(d.zonaSeguridad),
-
-          heading('III.3 Rutas de Escape', HeadingLevel.HEADING_2),
-          p('Las rutas de escape son los recorridos protegidos que conducen desde cualquier punto del establecimiento hasta la salida más próxima. Conforme Art. 172 del Decreto 351/79, ningún punto del piso debe distar más de 40 metros de la salida más cercana. Los medios de escape deben estar libres de obstáculos en todo momento, con puertas que abran en el sentido de evacuación, sin cerraduras que impidan la apertura desde el interior.'),
-          pBold('Descripción de las rutas de escape del establecimiento:'),
-          p(d.rutasEscape),
-
-          heading('III.4 Procedimientos ante Emergencia', HeadingLevel.HEADING_2),
-          p('Ante la detección de un foco de incendio o situación de emergencia, se deberán seguir los siguientes pasos:'),
-          p('1. Dar aviso de la emergencia mediante el sistema de alarma o de viva voz al personal presente.'),
-          p('2. Llamar al servicio de bomberos (100) y emergencias médicas (107) en forma inmediata.'),
-          p('3. Intentar extinguir el foco SOLAMENTE si es pequeño, utilizando el extintor más cercano, sin poner en riesgo la propia seguridad.'),
-          p('4. Si el foco no puede ser controlado, evacuar ordenadamente hacia las rutas de escape señalizadas.'),
-          p('5. Dirigirse al punto de reunión designado. No utilizar ascensores.'),
-          p('6. El responsable de emergencia realizará el conteo de personas evacuadas.'),
-          p('7. Cortar los suministros de gas y electricidad si es posible hacerlo de forma segura.'),
-          p('8. Permanecer en el punto de reunión hasta que la autoridad competente autorice el reingreso.'),
-          p(d.procedimientos || 'Se deberá capacitar al personal en estos procedimientos al menos una vez al año, realizando simulacros de evacuación con registro escrito.'),
-          p(`Sistema de alarma: ${d.alarmaSonora}. Iluminación de emergencia: ${d.ilumEmerg}.`),
-          emptyLine(),
-
-          heading('III.5 Brigada y Contactos de Emergencia', HeadingLevel.HEADING_2),
-          d.brigadaJefe ? p(`Jefe de Brigada / Responsable de Emergencia: ${d.brigadaJefe}`) : p('Se recomienda designar un responsable de emergencia.'),
-          d.brigadaTelefono ? p(`Teléfono de emergencia interno: ${d.brigadaTelefono}`) : emptyLine(),
-          brigadaRows.length ? p(`Integrantes de brigada: ${brigadaRows.map(r => r.nombre + ' (' + r.rol + ')').join(', ')}`) : emptyLine(),
-          p(`Bomberos: ${d.bomberosContacto || 'Bomberos — Tel. 100'}`),
-          p(`Emergencias médicas: ${d.emergMedContacto || 'SAME 107'}`),
 
           // === IV) MEMORIA TÉCNICA ===
           new Paragraph({ children: [new PageBreak()] }),
@@ -2974,21 +2564,9 @@ async function generateDocx() {
             p(`Distancia máxima de recorrido al extintor más cercano: ${c.distMaxExtintor} m. El técnico deberá verificar la distribución in situ.`),
           ] : []),
 
-          // === V) CROQUIS ===
-          ...(croquisData ? [
-            new Paragraph({ children: [new PageBreak()] }),
-            heading('V) CROQUIS DEL ESTABLECIMIENTO'),
-            p('Croquis esquemático del establecimiento indicando sectores, ubicación de extintores, salidas de emergencia y rutas de escape:'),
-            new Paragraph({
-              children: [new ImageRun({ data: signatureToUint8Array(croquisData), transformation: { width: 580, height: 230 } })],
-              spacing: { after: 120 },
-            }),
-            p('Nota: El presente croquis es esquemático y no reemplaza los planos aprobados por la autoridad competente.'),
-          ] : []),
-
-          // === VI) RECOMENDACIONES ===
+          // === V) RECOMENDACIONES ===
           new Paragraph({ children: [new PageBreak()] }),
-          heading('VI) RECOMENDACIONES'),
+          heading('V) RECOMENDACIONES'),
           p('1. Mantener libres y señalizados todos los medios de escape en todo momento.'),
           p('2. Realizar control y recarga de extintores conforme IRAM 3517/2 e IRAM 3546, al menos una vez al año o después de cada uso.'),
           p('3. Capacitar al personal en el uso de extintores y procedimientos de evacuación al menos una vez al año, dejando constancia escrita.'),
@@ -3002,15 +2580,15 @@ async function generateDocx() {
             p('10. En sectores de cocina o con presencia de aceites y grasas, disponer de extintores específicos Clase K (Acetato de Potasio) y manta ignífuga.') :
             emptyLine(),
 
-          // === VII) RESPONSABILIDAD ===
-          heading('VII) RESPONSABILIDAD DEL PROPIETARIO'),
+          // === VI) RESPONSABILIDAD ===
+          heading('VI) RESPONSABILIDAD DEL PROPIETARIO'),
           p(`El propietario o responsable del establecimiento "${d.razonSocial}" es responsable de cumplir y hacer cumplir las condiciones de protección contra incendios establecidas en la Ley Nacional N° 19.587 de Higiene y Seguridad en el Trabajo, su Decreto Reglamentario N° 351/79, y toda normativa complementaria aplicable a nivel provincial y municipal.`),
           p('Asimismo, deberá mantener vigente la habilitación municipal y las condiciones descriptas en la presente Memoria Técnica. Cualquier modificación edilicia, cambio de uso o redistribución de materiales combustibles requerirá una nueva evaluación técnica.'),
           p('El incumplimiento de las normas de protección contra incendios podrá dar lugar a las sanciones previstas en la legislación vigente, sin perjuicio de la responsabilidad civil y penal que pudiere corresponder.'),
 
           // === VIII) DECLARACIÓN JURADA ===
           new Paragraph({ children: [new PageBreak()] }),
-          heading('VIII) DECLARACIÓN JURADA'),
+          heading('VII) DECLARACIÓN JURADA'),
           emptyLine(),
           p(`El/La que suscribe, ${d.tecNombre}, con título habilitante de ${d.tecTitulo}, Matrícula N° ${d.tecMatricula}, en su carácter de profesional responsable contratado por ${d.propietario}, DECLARA BAJO JURAMENTO que ha relevado personalmente el establecimiento ubicado en ${d.domicilio}, y que los datos consignados en la presente Memoria Técnica Descriptiva de Protección Contra Incendios responden a la realidad según su leal saber y entender, asumiendo la responsabilidad técnica y legal que le compete conforme a la Ley Nacional N° 19.587, Decreto Reglamentario N° 351/79 y toda otra normativa vigente aplicable.`),
           emptyLine(),
@@ -3018,7 +2596,7 @@ async function generateDocx() {
 
           // === IX) FIRMAS ===
           new Paragraph({ children: [new PageBreak()] }),
-          heading('IX) FIRMAS'),
+          heading('VIII) FIRMAS'),
           emptyLine(),
           pBold('Técnico Responsable:'),
           ...(sigTecData ? [new Paragraph({
@@ -3096,38 +2674,7 @@ function getFormData() {
     signAscensor: v('signAscensor'), signPunto: v('signPunto'), signNoFumar: v('signNoFumar'),
     signPeligro: v('signPeligro'), signLuces: v('signLuces'), signFotolum: v('signFotolum'),
     signOtrosDesc: v('signOtrosDesc'), signOtrosQty: v('signOtrosQty'),
-    // Step 4 — Evacuación
-    zonaSeguridad: v('zonaSeguridad'),
-    rutasEscape: v('rutasEscape'),
-    procedimientos: v('procedimientos'),
-    procedimientoEvacuacion: v('procedimientoEvacuacion'),
-    // Step 4 — Alarma & Instalaciones
-    alarmaSonora: v('alarmaSonora'), alarmaMarca: v('alarmaMarca'), alarmaSirenas: v('alarmaSirenas'),
-    alarmaActivacion: v('alarmaActivacion'), alarmaVisual: v('alarmaVisual'), alarmaVisualQty: v('alarmaVisualQty'),
-    centralAlarma: v('centralAlarma'), centralAlarmaMarca: v('centralAlarmaMarca'),
-    detectoresHumo: v('detectoresHumo'), humoQty: v('humoQty'), humoTipo: v('humoTipo'), humoUbicaciones: v('humoUbicaciones'),
-    detectoresTemp: v('detectoresTemp'), tempQty: v('tempQty'),
-    ilumEmerg: v('ilumEmerg'), ilumQty: v('ilumQty'), ilumAutonomia: v('ilumAutonomia'), ilumMarca: v('ilumMarca'),
-    grupoElectrogeno: v('grupoElectrogeno'),
-    // Instalaciones especiales
-    rociadores: v('rociadores'), rociadoresQty: v('rociadoresQty'), rociadoresCobertura: v('rociadoresCobertura'), rociadoresNorma: v('rociadoresNorma'),
-    bie: v('bie'), bieQty: v('bieQty'), bieUbicacion: v('bieUbicacion'), bieDiametro: v('bieDiametro'),
-    hidrante: v('hidrante'), hidranteQty: v('hidranteQty'), hidranteUbicacion: v('hidranteUbicacion'), hidranteDistancia: v('hidranteDistancia'),
-    gasSupresion: v('gasSupresion'), gasAgente: v('gasAgente'), gasSectores: v('gasSectores'),
-    gabinetes: v('gabinetes'), gabinetesQty: v('gabinetesQty'), gabinetesUbicacion: v('gabinetesUbicacion'), gabinetesEquip: v('gabinetesEquip'),
-    // Brigada
-    brigadaJefe: v('brigadaJefe'),
-    brigadaTelefono: v('brigadaTelefono'),
-    jefeTurno: v('jefeTurno'),
-    suplenteNombre: v('suplenteNombre'),
-    suplenteTel: v('suplenteTel'),
-    simulacrosFreq: v('simulacrosFreq'),
-    simulacroUltimo: v('simulacroUltimo'),
-    simulacroProximo: v('simulacroProximo'),
-    capacitacionExt: v('capacitacionExt'),
-    capacitacionFecha: v('capacitacionFecha'),
-    bomberosContacto: v('bomberosContacto'),
-    emergMedContacto: v('emergMedContacto'),
+
     tieneSubsuelos: v('tieneSubsuelos'),
     tieneAscensores: v('tieneAscensores'),
     alturaMaxPiso: v('alturaMaxPiso'),
@@ -3159,20 +2706,14 @@ function resetForm() {
   });
   document.getElementById('m2NoCubiertos').value = '0';
   materialRows = []; materialIdCounter = 0; calculatedData = {};
-  extintorRows = []; extintorIdCounter = 0;
-  salidaRows = []; salidaIdCounter = 0;
-  brigadaRows = []; brigadaIdCounter = 0;
   pdfData = null; photosData = []; photoIdCounter = 0;
-  renderMaterialsTable(); renderExtintores(); renderSalidas(); renderBrigada(); renderPhotosGrid();
+  renderMaterialsTable(); renderPhotosGrid();
   removePdf();
   clearSignature('sigTecnico');
   clearSignature('sigPropietario');
-  clearCroquis();
-  document.querySelectorAll('.sub-details').forEach(el => el.style.display = 'none');
   localStorage.removeItem(STORAGE_KEY);
   currentStep = 1;
   updateStepUI();
-  initStep4();
   showToast('Formulario restablecido', '');
 }
 
@@ -3450,218 +2991,7 @@ function buildComplianceChecklist() {
 }
 
 // ========================================================
-// FIX 1 — EXTINTORES INVENTORY TABLE
-// ========================================================
-let extintorRows = [];
-let extintorIdCounter = 0;
-const EXTINTOR_POTENCIAL = { 'PQS ABC 5 kg': '2A:10B:C', 'PQS ABC 10 kg': '4A:20B:C', 'CO₂ 3.5 kg': '2B:C', 'CO₂ 5 kg': '5B:C', 'Agua 10 L': '2A', 'Acetato K 6 L': 'K', 'HCFC 2.5 kg': '1A:5B:C' };
-const EXTINTOR_CLASE = { 'PQS ABC 5 kg': 'ABC', 'PQS ABC 10 kg': 'ABC', 'CO₂ 3.5 kg': 'BC', 'CO₂ 5 kg': 'BC', 'Agua 10 L': 'A', 'Acetato K 6 L': 'K', 'HCFC 2.5 kg': 'ABC' };
-
-function addExtintorRow(preset) {
-  const id = ++extintorIdCounter;
-  const row = { id, ubicacion: '', tipo: 'PQS ABC 5 kg', capacidad: '5 kg', distancia: '', vencimiento: '', vencimientoPH: '', observaciones: '', nroInterno: '' };
-  if (preset) Object.assign(row, preset);
-  extintorRows.push(row);
-  renderExtintores();
-}
-
-function removeExtintorRow(id) {
-  extintorRows = extintorRows.filter(r => r.id !== id);
-  renderExtintores();
-}
-
-function updateExtintorField(id, field, value) {
-  const row = extintorRows.find(r => r.id === id);
-  if (row) { row[field] = value; renderExtintores(); }
-}
-
-function renderExtintores() {
-  const tbody = document.getElementById('extintoresBody');
-  if (!tbody) return;
-  tbody.innerHTML = '';
-  extintorRows.forEach(row => {
-    const potencial = EXTINTOR_POTENCIAL[row.tipo] || '-';
-    const clase = EXTINTOR_CLASE[row.tipo] || '-';
-    const tr = document.createElement('tr');
-    tr.innerHTML = `
-      <td><input type="text" value="${escapeHtml(row.ubicacion)}" placeholder="Ej: Entrada principal" onchange="updateExtintorField(${row.id},'ubicacion',this.value)"></td>
-      <td><select onchange="updateExtintorField(${row.id},'tipo',this.value)">${Object.keys(EXTINTOR_POTENCIAL).map(t=>'<option'+(t===row.tipo?' selected':'')+'>'+t+'</option>').join('')}</select></td>
-      <td><input type="text" value="${escapeHtml(row.capacidad)}" placeholder="5 kg" onchange="updateExtintorField(${row.id},'capacidad',this.value)" style="width:70px"></td>
-      <td style="text-align:center">${potencial}</td>
-      <td style="text-align:center">${clase}</td>
-      <td><input type="number" value="${row.distancia}" placeholder="m" min="0" step="0.1" onchange="updateExtintorField(${row.id},'distancia',this.value)" style="width:55px"></td>
-      <td><input type="month" value="${row.vencimiento}" onchange="updateExtintorField(${row.id},'vencimiento',this.value)"></td>
-      <td><input type="month" value="${row.vencimientoPH || ''}" onchange="updateExtintorField(${row.id},'vencimientoPH',this.value)"></td>
-      <td><input type="text" value="${escapeHtml(row.observaciones || '')}" placeholder="Obs." onchange="updateExtintorField(${row.id},'observaciones',this.value)"></td>
-      <td class="col-actions"><button class="btn-remove-row" title="Eliminar" onclick="removeExtintorRow(${row.id})">✕</button></td>`;
-    tbody.appendChild(tr);
-  });
-  const totalEl = document.getElementById('extintoresTotal');
-  if (totalEl) totalEl.textContent = `Total: ${extintorRows.length} extintor(es)`;
-}
-
-// ========================================================
-// FIX 2 — SALIDAS Y MEDIOS DE ESCAPE TABLE
-// ========================================================
-let salidaRows = [];
-let salidaIdCounter = 0;
-
-function addSalidaRow(preset) {
-  const id = ++salidaIdCounter;
-  const row = { id, descripcion: '', ubicacion: '', tipo: 'Puerta', ancho: '', sentido: 'Hacia afuera', senalizada: 'Sí', iluminada: 'Sí', distancia: '', estado: 'Bueno' };
-  if (preset) Object.assign(row, preset);
-  salidaRows.push(row);
-  renderSalidas();
-}
-
-function removeSalidaRow(id) {
-  salidaRows = salidaRows.filter(r => r.id !== id);
-  renderSalidas();
-}
-
-function updateSalidaField(id, field, value) {
-  const row = salidaRows.find(r => r.id === id);
-  if (row) { row[field] = value; renderSalidas(); }
-}
-
-function renderSalidas() {
-  const tbody = document.getElementById('salidasBody');
-  if (!tbody) return;
-  tbody.innerHTML = '';
-  salidaRows.forEach(row => {
-    const tr = document.createElement('tr');
-    tr.innerHTML = `
-      <td><input type="text" value="${escapeHtml(row.descripcion)}" placeholder="Ej: Puerta principal" onchange="updateSalidaField(${row.id},'descripcion',this.value)"></td>
-      <td><input type="text" value="${escapeHtml(row.ubicacion || '')}" placeholder="Ej: PB frente" onchange="updateSalidaField(${row.id},'ubicacion',this.value)"></td>
-      <td><input type="number" value="${row.ancho}" min="0" step="0.01" placeholder="m" onchange="updateSalidaField(${row.id},'ancho',this.value)" style="width:70px"></td>
-      <td><select onchange="updateSalidaField(${row.id},'sentido',this.value)">
-        ${['Hacia afuera','Hacia adentro','Corredera','Giratoria'].map(s=>'<option'+(s===row.sentido?' selected':'')+'>'+s+'</option>').join('')}
-      </select></td>
-      <td style="text-align:center"><select onchange="updateSalidaField(${row.id},'senalizada',this.value)"><option${row.senalizada==='Sí'?' selected':''}>Sí</option><option${row.senalizada==='No'?' selected':''}>No</option></select></td>
-      <td style="text-align:center"><select onchange="updateSalidaField(${row.id},'iluminada',this.value)"><option${row.iluminada==='Sí'?' selected':''}>Sí</option><option${row.iluminada==='No'?' selected':''}>No</option></select></td>
-      <td><input type="number" value="${row.distancia || ''}" min="0" step="0.1" placeholder="m" onchange="updateSalidaField(${row.id},'distancia',this.value)" style="width:55px"></td>
-      <td><select onchange="updateSalidaField(${row.id},'estado',this.value)">
-        ${['Bueno','Regular','Malo'].map(e=>'<option'+((e===(row.estado||'Bueno'))?' selected':'')+'>'+e+'</option>').join('')}
-      </select></td>
-      <td class="col-actions"><button class="btn-remove-row" title="Eliminar" onclick="removeSalidaRow(${row.id})">✕</button></td>`;
-    tbody.appendChild(tr);
-  });
-  // Update UAS calc
-  const uasEl = document.getElementById('salidasUasCalc');
-  if (uasEl && calculatedData.anchoMin) {
-    const totalAncho = salidaRows.reduce((s, r) => s + (parseFloat(r.ancho) || 0), 0);
-    const uasDisp = (totalAncho / 0.55).toFixed(1);
-    const ok = totalAncho >= parseFloat(calculatedData.anchoMin);
-    uasEl.innerHTML = `Ancho total disponible: <strong>${totalAncho.toFixed(2)} m</strong> (${uasDisp} UAS) — Requerido: ${calculatedData.anchoMin} m (${calculatedData.nUAS} UAS) ${ok ? '<span style="color:var(--green)">✓ Cumple</span>' : '<span style="color:var(--accent-red)">✕ Insuficiente</span>'}`;
-  }
-  // Warnings
-  const warnEl = document.getElementById('salidasWarnings');
-  if (warnEl) {
-    const warns = [];
-    salidaRows.forEach(r => {
-      if (r.sentido === 'Hacia adentro') warns.push(`"${r.descripcion || 'Salida'}" abre hacia adentro — Dec. 351/79 exige apertura en sentido de evacuación.`);
-      if (r.senalizada === 'No') warns.push(`"${r.descripcion || 'Salida'}" no está señalizada — Obligatorio conforme IRAM 10005.`);
-    });
-    if (warns.length) {
-      warnEl.innerHTML = '⚠ ' + warns.join('<br>⚠ ');
-      warnEl.style.display = 'block';
-    } else {
-      warnEl.innerHTML = '';
-      warnEl.style.display = 'none';
-    }
-  }
-}
-
-// ========================================================
-// FIX 3 — BRIGADA DYNAMIC TABLE
-// ========================================================
-let brigadaRows = [];
-let brigadaIdCounter = 0;
-
-function addBrigadaRow(preset) {
-  const id = ++brigadaIdCounter;
-  const row = { id, nombre: '', rol: 'Brigadista', turno: 'Full time', telefono: '' };
-  if (preset) Object.assign(row, preset);
-  brigadaRows.push(row);
-  renderBrigada();
-}
-
-function removeBrigadaRow(id) {
-  brigadaRows = brigadaRows.filter(r => r.id !== id);
-  renderBrigada();
-}
-
-function updateBrigadaField(id, field, value) {
-  const row = brigadaRows.find(r => r.id === id);
-  if (row) { row[field] = value; }
-}
-
-function renderBrigada() {
-  const tbody = document.getElementById('brigadaBody');
-  if (!tbody) return;
-  tbody.innerHTML = '';
-  brigadaRows.forEach(row => {
-    const tr = document.createElement('tr');
-    tr.innerHTML = `
-      <td><input type="text" value="${escapeHtml(row.nombre)}" placeholder="Nombre completo" onchange="updateBrigadaField(${row.id},'nombre',this.value)"></td>
-      <td><select onchange="updateBrigadaField(${row.id},'rol',this.value)">
-        ${['Brigadista','Suplente','Primer respondedor','Encargado piso','Apoyo logístico'].map(r=>'<option'+(r===row.rol?' selected':'')+'>'+r+'</option>').join('')}
-      </select></td>
-      <td><select onchange="updateBrigadaField(${row.id},'turno',this.value)">
-        ${['Mañana','Tarde','Noche','Full time'].map(t=>'<option'+(t===row.turno?' selected':'')+'>'+t+'</option>').join('')}
-      </select></td>
-      <td><input type="tel" value="${escapeHtml(row.telefono)}" placeholder="Tel" onchange="updateBrigadaField(${row.id},'telefono',this.value)"></td>
-      <td class="col-actions"><button class="btn-remove-row" title="Eliminar" onclick="removeBrigadaRow(${row.id})">✕</button></td>`;
-    tbody.appendChild(tr);
-  });
-}
-
-// ========================================================
-// FIX 4 — TOGGLE DETAILS (Alarma, Instalaciones)
-// ========================================================
-function toggleAlarmaDetails(selectEl, detailsId) {
-  const el = document.getElementById(detailsId);
-  if (el) el.style.display = selectEl.value === 'Sí' ? 'block' : 'none';
-}
-
-function toggleInstDetails(selectEl, detailsId) {
-  const el = document.getElementById(detailsId);
-  if (el) el.style.display = selectEl.value === 'Sí' ? 'block' : 'none';
-}
-
-function toggleCapacitacionFecha() {
-  const sel = document.getElementById('capacitacionExt');
-  const grp = document.getElementById('capacitacionFechaGroup');
-  if (sel && grp) grp.style.display = sel.value === 'Sí' ? 'flex' : 'none';
-}
-
-// ========================================================
-// FIX 5 — PROCEDIMIENTO DE EVACUACIÓN DEFAULT
-// ========================================================
-function getProcedimientoDefault() {
-  return `1. Al detectar el fuego: Dar aviso al Jefe de Brigada o responsable.\n2. Activar la alarma de incendio (pulsador manual o aviso verbal).\n3. Si el fuego es pequeño y controlable, intentar extinguirlo con el matafuego más cercano.\n4. Si el fuego no se controla en 60 segundos, evacuar inmediatamente.\n5. Evacuar por las rutas de escape señalizadas hacia la zona de seguridad.\n6. No utilizar ascensores.\n7. Cerrar puertas y ventanas al evacuar (sin trabar).\n8. El Jefe de Brigada realizará el recuento de personas en el punto de reunión.\n9. Llamar al 100 (Bomberos) y al 107 (Emergencias Médicas).\n10. No reingresar al edificio hasta que lo autorice Bomberos.`;
-}
-
-function resetProcedimiento() {
-  const el = document.getElementById('procedimientoEvacuacion');
-  if (el) el.value = getProcedimientoDefault();
-}
-
-// ========================================================
-// FIX 6 — STEP 4 INIT
-// ========================================================
-function initStep4() {
-  // Default procedimiento if empty
-  const procEl = document.getElementById('procedimientoEvacuacion');
-  if (procEl && !procEl.value) procEl.value = getProcedimientoDefault();
-  // Toggle listeners for alarma/instalaciones
-  document.querySelectorAll('.sub-details').forEach(el => el.style.display = 'none');
-  const capGrp = document.getElementById('capacitacionFechaGroup');
-  if (capGrp) capGrp.style.display = 'none';
-}
-
-// ========================================================
-// FIX 7 — MULTIMEDIA TAB SYSTEM (STEP 5)
+// MULTIMEDIA TAB SYSTEM (STEP 5)
 // ========================================================
 let pdfData = null;
 let photosData = [];
@@ -3817,15 +3147,8 @@ function collectAllFormData() {
   });
   data.materialRows = materialRows;
   data.materialIdCounter = materialIdCounter;
-  data.extintorRows = extintorRows;
-  data.extintorIdCounter = extintorIdCounter;
-  data.salidaRows = salidaRows;
-  data.salidaIdCounter = salidaIdCounter;
-  data.brigadaRows = brigadaRows;
-  data.brigadaIdCounter = brigadaIdCounter;
   data.sigTecnico = getSignatureData('sigTecnico');
   data.sigPropietario = getSignatureData('sigPropietario');
-  data.croquis = getCroquisData();
   data.pdfData = pdfData;
   data.photosData = photosData;
   data.photoIdCounter = photoIdCounter;
@@ -3881,16 +3204,9 @@ function restoreFormFromState(data) {
   });
   // Materials
   if (data.materialRows) { materialRows = data.materialRows; materialIdCounter = data.materialIdCounter || 0; renderMaterialsTable(); }
-  // Extintores
-  if (data.extintorRows) { extintorRows = data.extintorRows; extintorIdCounter = data.extintorIdCounter || 0; renderExtintores(); }
-  // Salidas
-  if (data.salidaRows) { salidaRows = data.salidaRows; salidaIdCounter = data.salidaIdCounter || 0; renderSalidas(); }
-  // Brigada
-  if (data.brigadaRows) { brigadaRows = data.brigadaRows; brigadaIdCounter = data.brigadaIdCounter || 0; renderBrigada(); }
   // Signatures
   if (data.sigTecnico) restoreSignature('sigTecnico', data.sigTecnico);
   if (data.sigPropietario) restoreSignature('sigPropietario', data.sigPropietario);
-  if (data.croquis) restoreCroquis(data.croquis);
   // PDF
   if (data.pdfData) { pdfData = data.pdfData; renderPdfPreview(); }
   // Photos
@@ -3898,29 +3214,6 @@ function restoreFormFromState(data) {
   // Trigger recalculations
   calcSuperficieTotal();
   updateDeclaracionJurada();
-  // Toggle alarma/instalaciones details based on restored values
-  const alarmaMap = {
-    alarmaSonora: 'alarmaSonoraDetails',
-    alarmaVisual: 'alarmaVisualQty',
-    centralAlarma: 'centralAlarmaMarca',
-    detectoresHumo: 'detectoresHumoDetails',
-    detectoresTemp: 'tempQty',
-    ilumEmerg: 'ilumEmergDetails'
-  };
-  Object.entries(alarmaMap).forEach(([selId, detId]) => {
-    const el = document.getElementById(selId);
-    if (el && el.value === 'Sí') {
-      const detEl = document.getElementById(detId);
-      if (detEl) detEl.style.display = 'block';
-    }
-  });
-  ['rociadores','bie','hidrante','gasSupresion','gabinetes'].forEach(id => {
-    const el = document.getElementById(id);
-    if (el && el.value === 'Sí') {
-      const detEl = document.getElementById(id + 'Det');
-      if (detEl) detEl.style.display = 'block';
-    }
-  });
 }
 
 // ========================================================
@@ -3944,208 +3237,6 @@ function showError(msg) {
 }
 
 // ========================================================
-// CROQUIS DRAWING SYSTEM
-// ========================================================
-let croquisTool = 'pen';
-let croquisColor = '#1a2744';
-let croquisHistory = [];
-let croquisDrawing = false;
-let croquisStartPos = null;
-
-function initCroquis() {
-  const canvas = document.getElementById('croquisCanvas');
-  if (!canvas) return;
-  const rect = canvas.getBoundingClientRect();
-  canvas.width = rect.width || 800;
-  canvas.height = rect.height || 320;
-  const ctx = canvas.getContext('2d');
-  // Draw grid
-  drawCroquisGrid(ctx, canvas.width, canvas.height);
-  // Save initial state
-  croquisHistory = [ctx.getImageData(0, 0, canvas.width, canvas.height)];
-
-  let lastX, lastY;
-
-  function getPos(e) {
-    const r = canvas.getBoundingClientRect();
-    const touch = e.touches ? e.touches[0] : e;
-    return { x: touch.clientX - r.left, y: touch.clientY - r.top };
-  }
-
-  canvas.addEventListener('mousedown', (e) => {
-    e.preventDefault();
-    const pos = getPos(e);
-    croquisDrawing = true;
-    croquisStartPos = pos;
-    lastX = pos.x; lastY = pos.y;
-    if (croquisTool === 'pen') {
-      ctx.beginPath();
-      ctx.moveTo(pos.x, pos.y);
-    }
-  });
-
-  canvas.addEventListener('mousemove', (e) => {
-    if (!croquisDrawing) return;
-    e.preventDefault();
-    const pos = getPos(e);
-    if (croquisTool === 'pen') {
-      ctx.strokeStyle = croquisColor;
-      ctx.lineWidth = 2;
-      ctx.lineCap = 'round';
-      ctx.lineJoin = 'round';
-      ctx.lineTo(pos.x, pos.y);
-      ctx.stroke();
-    }
-    lastX = pos.x; lastY = pos.y;
-  });
-
-  canvas.addEventListener('mouseup', (e) => {
-    if (!croquisDrawing) return;
-    e.preventDefault();
-    const pos = getPos(e);
-    finishCroquisShape(ctx, canvas, pos);
-    croquisDrawing = false;
-  });
-
-  canvas.addEventListener('mouseleave', () => {
-    if (croquisDrawing && croquisTool === 'pen') {
-      croquisHistory.push(ctx.getImageData(0, 0, canvas.width, canvas.height));
-    }
-    croquisDrawing = false;
-  });
-
-  // Touch events
-  canvas.addEventListener('touchstart', (e) => {
-    e.preventDefault();
-    const pos = getPos(e);
-    croquisDrawing = true;
-    croquisStartPos = pos;
-    lastX = pos.x; lastY = pos.y;
-    if (croquisTool === 'pen') {
-      ctx.beginPath();
-      ctx.moveTo(pos.x, pos.y);
-    }
-  }, { passive: false });
-
-  canvas.addEventListener('touchmove', (e) => {
-    if (!croquisDrawing) return;
-    e.preventDefault();
-    const pos = getPos(e);
-    if (croquisTool === 'pen') {
-      ctx.strokeStyle = croquisColor;
-      ctx.lineWidth = 2;
-      ctx.lineCap = 'round';
-      ctx.lineJoin = 'round';
-      ctx.lineTo(pos.x, pos.y);
-      ctx.stroke();
-    }
-  }, { passive: false });
-
-  canvas.addEventListener('touchend', (e) => {
-    if (!croquisDrawing) return;
-    e.preventDefault();
-    const pos = croquisStartPos; // Use start pos as fallback
-    finishCroquisShape(ctx, canvas, pos);
-    croquisDrawing = false;
-  });
-}
-
-function finishCroquisShape(ctx, canvas, endPos) {
-  if (!croquisStartPos) return;
-  ctx.strokeStyle = croquisColor;
-  ctx.lineWidth = 2;
-  ctx.lineCap = 'round';
-
-  if (croquisTool === 'line') {
-    ctx.beginPath();
-    ctx.moveTo(croquisStartPos.x, croquisStartPos.y);
-    ctx.lineTo(endPos.x, endPos.y);
-    ctx.stroke();
-  } else if (croquisTool === 'rect') {
-    const w = endPos.x - croquisStartPos.x;
-    const h = endPos.y - croquisStartPos.y;
-    ctx.strokeRect(croquisStartPos.x, croquisStartPos.y, w, h);
-  } else if (croquisTool === 'text') {
-    const text = prompt('Ingrese texto para colocar en el croquis:');
-    if (text) {
-      ctx.fillStyle = croquisColor;
-      ctx.font = '13px Arial';
-      ctx.fillText(text, croquisStartPos.x, croquisStartPos.y);
-    }
-  }
-
-  croquisHistory.push(ctx.getImageData(0, 0, canvas.width, canvas.height));
-}
-
-function drawCroquisGrid(ctx, w, h) {
-  ctx.strokeStyle = '#eef0f4';
-  ctx.lineWidth = 0.5;
-  for (let x = 0; x <= w; x += 20) {
-    ctx.beginPath(); ctx.moveTo(x, 0); ctx.lineTo(x, h); ctx.stroke();
-  }
-  for (let y = 0; y <= h; y += 20) {
-    ctx.beginPath(); ctx.moveTo(0, y); ctx.lineTo(w, y); ctx.stroke();
-  }
-}
-
-function setCroquisTool(tool) {
-  croquisTool = tool;
-  document.querySelectorAll('.croquis-toolbar button').forEach(b => b.classList.remove('active'));
-  const btn = document.getElementById('tool' + tool.charAt(0).toUpperCase() + tool.slice(1));
-  if (btn) btn.classList.add('active');
-  // Also mark by content match
-  document.querySelectorAll('.croquis-toolbar button').forEach(b => {
-    if (tool === 'pen' && b.textContent.includes('Lápiz')) b.classList.add('active');
-    if (tool === 'line' && b.textContent.includes('Línea')) b.classList.add('active');
-    if (tool === 'rect' && b.textContent.includes('Rectángulo')) b.classList.add('active');
-    if (tool === 'text' && b.textContent.includes('Texto')) b.classList.add('active');
-  });
-}
-
-function setCroquisColor(el) {
-  croquisColor = el.dataset.color;
-  document.querySelectorAll('.croquis-toolbar .color-swatch').forEach(s => s.classList.remove('active'));
-  el.classList.add('active');
-}
-
-function undoCroquis() {
-  const canvas = document.getElementById('croquisCanvas');
-  if (!canvas || croquisHistory.length <= 1) return;
-  croquisHistory.pop();
-  const ctx = canvas.getContext('2d');
-  ctx.putImageData(croquisHistory[croquisHistory.length - 1], 0, 0);
-}
-
-function clearCroquis() {
-  const canvas = document.getElementById('croquisCanvas');
-  if (!canvas) return;
-  const ctx = canvas.getContext('2d');
-  ctx.clearRect(0, 0, canvas.width, canvas.height);
-  drawCroquisGrid(ctx, canvas.width, canvas.height);
-  croquisHistory = [ctx.getImageData(0, 0, canvas.width, canvas.height)];
-}
-
-function getCroquisData() {
-  const canvas = document.getElementById('croquisCanvas');
-  if (!canvas || croquisHistory.length <= 1) return null;
-  return canvas.toDataURL('image/png');
-}
-
-function restoreCroquis(dataUrl) {
-  const canvas = document.getElementById('croquisCanvas');
-  if (!canvas || !dataUrl) return;
-  const ctx = canvas.getContext('2d');
-  const img = new Image();
-  img.onload = () => {
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
-    ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
-    croquisHistory = [ctx.getImageData(0, 0, canvas.width, canvas.height)];
-    croquisHistory.push(ctx.getImageData(0, 0, canvas.width, canvas.height));
-  };
-  img.src = dataUrl;
-}
-
-// ========================================================
 // PRINT FUNCTION
 // ========================================================
 function printPreview() {
@@ -4164,9 +3255,7 @@ window.addEventListener('DOMContentLoaded', () => {
   createDataLists();
   initSignaturePad('sigTecnico');
   initSignaturePad('sigPropietario');
-  initCroquis();
   setupDJListeners();
-  initStep4();
   setupDropZones();
   const restored = loadFromLocalStorage(true);
   if (!restored) {
