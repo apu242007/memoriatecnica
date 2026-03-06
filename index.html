@@ -589,56 +589,6 @@ h1, h2, h3, h4 { font-family: 'Crimson Pro', 'Source Serif 4', Georgia, serif; c
 .toast.success { background: var(--green); }
 .toast.error { background: var(--accent-red); }
 
-/* ===== CROQUIS CANVAS ===== */
-.croquis-container { position: relative; margin-bottom: 0.5rem; }
-.croquis-canvas {
-  border: 2px solid var(--border);
-  border-radius: 6px;
-  background: #fff;
-  cursor: crosshair;
-  width: 100%;
-  height: 320px;
-  display: block;
-  touch-action: none;
-}
-.croquis-canvas:hover { border-color: var(--navy-lighter); }
-.croquis-toolbar {
-  display: flex;
-  gap: 0.5rem;
-  align-items: center;
-  flex-wrap: wrap;
-  margin-top: 0.5rem;
-}
-.croquis-toolbar button {
-  background: var(--bg);
-  border: 1px solid var(--border);
-  padding: 0.35rem 0.75rem;
-  border-radius: 4px;
-  cursor: pointer;
-  font-size: 0.78rem;
-  transition: all 0.2s;
-}
-.croquis-toolbar button:hover { background: #e8ecf2; border-color: var(--navy-lighter); }
-.croquis-toolbar button.active { background: var(--navy); color: white; border-color: var(--navy); }
-.croquis-toolbar .color-swatch {
-  width: 22px; height: 22px;
-  border-radius: 50%;
-  border: 2px solid var(--border);
-  cursor: pointer;
-  transition: transform 0.15s;
-}
-.croquis-toolbar .color-swatch:hover { transform: scale(1.15); }
-.croquis-toolbar .color-swatch.active { border-color: var(--navy); box-shadow: 0 0 0 2px var(--navy); }
-
-/* ===== BRIGADE CARD ===== */
-.brigade-role-row {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  gap: 0.75rem;
-  margin-bottom: 0.5rem;
-}
-.brigade-role-row input { width: 100%; }
-
 /* ===== DECLARACIÓN JURADA ===== */
 .dj-text {
   background: #f8f9fb;
@@ -700,12 +650,6 @@ h1, h2, h3, h4 { font-family: 'Crimson Pro', 'Source Serif 4', Georgia, serif; c
 .th-qty { width: 90px; }
 .th-power { width: 130px; }
 .th-load { width: 120px; }
-.croquis-separator { border-left: 1px solid var(--border); height: 20px; margin: 0 0.25rem; display: inline-block; }
-.color-swatch[data-color="#1a2744"] { background: #1a2744; }
-.color-swatch[data-color="#c0392b"] { background: #c0392b; }
-.color-swatch[data-color="#27ae60"] { background: #27ae60; }
-.color-swatch[data-color="#2980b9"] { background: #2980b9; }
-.color-swatch[data-color="#f39c12"] { background: #f39c12; }
 .btn-print-inline { margin-left: 1rem; padding: 0.85rem 2rem; font-size: 1rem; }
 .download-hint { margin-top: 0.75rem; color: var(--text-light); font-size: 0.82rem; }
 
@@ -722,11 +666,6 @@ h1, h2, h3, h4 { font-family: 'Crimson Pro', 'Source Serif 4', Georgia, serif; c
 .btn-add:hover { background:#219150; }
 .btn-remove { background:var(--accent-red); color:white; border:none; padding:0.2rem 0.5rem; border-radius:4px; cursor:pointer; font-size:0.9rem; }
 .btn-remove:hover { background:var(--accent-red-light); }
-.yes-no-group { display:flex; align-items:center; gap:1rem; padding:0.6rem 0; border-bottom:1px solid #f0f2f5; }
-.yes-no-group label { flex:1; font-size:0.88rem; font-weight:500; }
-.yes-no-group select { padding:0.35rem 0.6rem; border:1.5px solid var(--border); border-radius:6px; font-size:0.88rem; }
-.sub-details { padding:0.6rem 1rem; background:#f8f9fb; border-left:3px solid #3498db; margin:0.3rem 0 0.5rem; display:flex; gap:0.6rem; flex-wrap:wrap; border-radius:0 6px 6px 0; }
-.sub-details input, .sub-details select { padding:0.35rem 0.5rem; border:1.5px solid var(--border); border-radius:4px; font-size:0.85rem; font-family:inherit; }
 .inst-row { padding:0.5rem 0; border-bottom:1px solid #f0f2f5; }
 .normative-box { background:#eaf4fb; border-left:4px solid #3498db; padding:0.7rem 1rem; margin-top:0.75rem; font-size:0.83rem; border-radius:0 6px 6px 0; line-height:1.5; }
 .total-display { background:var(--bg); padding:0.6rem 1rem; border-radius:var(--radius); font-weight:700; font-size:0.95rem; color:var(--navy); margin-top:0.75rem; }
@@ -756,11 +695,7 @@ h1, h2, h3, h4 { font-family: 'Crimson Pro', 'Source Serif 4', Georgia, serif; c
   .main-container { padding: 0 0.75rem 2rem; }
   .card { padding: 1rem; }
   .preview-container { padding: 1.25rem; }
-  .brigade-role-row { grid-template-columns: 1fr; }
-  .croquis-canvas { height: 220px; }
   .sign-row { flex-wrap: wrap; }
-  .yes-no-group { flex-wrap: wrap; }
-  .sub-details { flex-direction: column; }
   .photo-card { width: 150px; }
   .tab-btn { padding: 0.5rem 0.75rem; font-size: 0.78rem; }
 }
@@ -771,22 +706,6 @@ h1, h2, h3, h4 { font-family: 'Crimson Pro', 'Source Serif 4', Georgia, serif; c
 .mt-half { margin-top: 0.5rem }
 
 #signOtrosDesc { flex: 2 }
-#extintoresTable th:nth-child(1) { width: 140px }
-#extintoresTable th:nth-child(2) { width: 100px }
-#extintoresTable th:nth-child(3) { width: 80px }
-#extintoresTable th:nth-child(4) { width: 90px }
-#extintoresTable th:nth-child(5) { width: 90px }
-#extintoresTable th:nth-child(6) { width: 60px }
-#extintoresTable th:nth-child(7) { width: 110px }
-#extintoresTable th:nth-child(8) { width: 110px }
-#extintoresTable th:nth-child(9) { width: 120px }
-#extintoresTable th:nth-child(10) { width: 35px }
-#salidasTable th:nth-child(1) { width: 140px }
-#salidasTable th:nth-child(2) { width: 130px }
-#salidasTable th:nth-child(3) { width: 70px }
-#salidasTable th:nth-child(4) { width: 130px }
-#salidasTable th:nth-child(5) { width: 50px }
-#salidasTable th:nth-child(6) { width: 50px }
 #pdfPreviewContainer, #tabPlanoPdf, #tabFotos,
 #pdfUploadInput, #photosInput { display: none }
 #pdfPreviewContainer > div:first-child {
@@ -856,7 +775,7 @@ h1, h2, h3, h4 { font-family: 'Crimson Pro', 'Source Serif 4', Georgia, serif; c
     <div class="step-line" id="line3"></div>
     <div class="step-dot" data-step="4" onclick="goToStep(4)">
       <div class="dot">4</div>
-      <div class="label">Emergencia</div>
+      <div class="label">Señalización</div>
     </div>
     <div class="step-line" id="line4"></div>
     <div class="step-dot" data-step="5" onclick="goToStep(5)">
@@ -1254,7 +1173,7 @@ h1, h2, h3, h4 { font-family: 'Crimson Pro', 'Source Serif 4', Georgia, serif; c
 <section class="step-section" id="step5">
   <div class="section-header">
     <h2>Paso 5 — Multimedia</h2>
-    <p>Adjunte plano en PDF, fotografías del establecimiento y descargue el croquis.</p>
+    <p>Adjunte plano en PDF y fotografías del establecimiento.</p>
   </div>
 
   <div class="card">
@@ -1989,12 +1908,13 @@ function buildPreview() {
     <p>Situación: <strong>${c.situacion}</strong> — Construcción: <strong>${c.construccion}</strong> — Extinción: <strong>${c.extincion}</strong></p>
     ${c.condicionesDetalle && c.condicionesDetalle.length ? '<ul>' + c.condicionesDetalle.map(d => '<li>' + d + '</li>').join('') + '</ul>' : ''}
 
-    ${(c.extDistRows && c.extDistRows.length) ? `
     <h3>IV.10 — Boca de Impulsión</h3>
     ${(c.extincion === 'E2' || c.extincion === 'E3') ?
       `<p>La condición de extinción ${c.extincion} requiere la instalación de boca de impulsión para bomberos conforme IRAM 3597.</p>` :
       `<p>Para el presente establecimiento (${c.riesgo}, ${c.m2} m², condición ${c.extincion}), NO se requiere boca de impulsión. Requerida a partir de condición E2.</p>`
     }
+
+    ${(c.extDistRows && c.extDistRows.length) ? `
     <h3>IV.11 — Distribución de Extintores por Sector</h3>
     <table>
       <thead><tr><th>Sector / Planta</th><th>Carga (kcal)</th><th>% Carga</th><th>Extintores</th><th>Tipo</th><th>Potencial</th></tr></thead>
@@ -2002,19 +1922,7 @@ function buildPreview() {
     </table>
     ` : ''}
 
-    ${pdfData ? `
-    <h2>V) PLANO DEL ESTABLECIMIENTO</h2>
-    <p>Se adjunta plano en formato PDF: <strong>${escapeHtml(pdfData.name)}</strong></p>
-    ` : ''}
-
-    ${photosData.length ? `
-    <h2>ANEXO FOTOGRÁFICO</h2>
-    <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:1rem;">
-      ${photosData.map(p => '<div style="text-align:center"><img src="' + p.dataUrl + '" style="width:100%;max-height:300px;object-fit:contain;border:1px solid #ddd;border-radius:4px" alt=""><p style="font-size:0.8rem;margin-top:0.25rem">' + escapeHtml(p.caption || p.category) + '</p></div>').join('')}
-    </div>
-    ` : ''}
-
-    <h2>VI) RECOMENDACIONES</h2>
+    <h2>V) RECOMENDACIONES</h2>
     <ul>
       <li>Mantener libres y señalizados todos los medios de escape en todo momento.</li>
       <li>Realizar control y recarga de extintores conforme IRAM 3517/2 e IRAM 3546.</li>
@@ -2024,10 +1932,10 @@ function buildPreview() {
       <li>Colocar señalización conforme IRAM 10005 e IRAM 3599.</li>
     </ul>
 
-    <h2>VII) RESPONSABILIDAD DEL PROPIETARIO</h2>
+    <h2>VI) RESPONSABILIDAD DEL PROPIETARIO</h2>
     <p>El propietario del establecimiento es responsable de cumplir y hacer cumplir las condiciones de protección contra incendios establecidas en la Ley 19.587, Dec. 351/79 y normas complementarias. Asimismo, deberá mantener vigente la habilitación y las condiciones descriptas en la presente memoria técnica.</p>
 
-    <h2>VIII) DECLARACIÓN JURADA</h2>
+    <h2>VII) DECLARACIÓN JURADA</h2>
     <p>El/La que suscribe, <strong>${escapeHtml(d.tecNombre)}</strong>, con título habilitante de <strong>${escapeHtml(d.tecTitulo)}</strong>, Matrícula N° <strong>${escapeHtml(d.tecMatricula)}</strong>, en su carácter de profesional responsable contratado por <strong>${escapeHtml(d.propietario)}</strong>, DECLARA BAJO JURAMENTO que ha relevado personalmente el establecimiento ubicado en <strong>${escapeHtml(d.domicilio)}</strong>, y que los datos consignados en la presente Memoria Técnica Descriptiva de Protección Contra Incendios responden a la realidad según su leal saber y entender, asumiendo la responsabilidad técnica y legal que le compete conforme a la Ley Nacional N° 19.587, Decreto Reglamentario N° 351/79 y toda otra normativa vigente aplicable.</p>
 
     <div style="margin-top:3rem;display:flex;justify-content:space-between;">
@@ -2048,6 +1956,18 @@ function buildPreview() {
       </div>
     </div>
     <p style="text-align:center;margin-top:2rem;font-size:0.82rem;color:var(--text-light);">${escapeHtml(d.domicilio)} — ${fecha}</p>
+
+    ${pdfData ? `
+    <h2 style="margin-top:3rem;">ANEXO — PLANO DEL ESTABLECIMIENTO</h2>
+    <p>Se adjunta plano en formato PDF: <strong>${escapeHtml(pdfData.name)}</strong></p>
+    ` : ''}
+
+    ${photosData.length ? `
+    <h2 style="margin-top:3rem;">ANEXO FOTOGRÁFICO</h2>
+    <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:1rem;">
+      ${photosData.map(p => '<div style="text-align:center"><img src="' + p.dataUrl + '" style="width:100%;max-height:300px;object-fit:contain;border:1px solid #ddd;border-radius:4px" alt=""><p style="font-size:0.8rem;margin-top:0.25rem">' + escapeHtml(p.caption || p.category) + '</p></div>').join('')}
+    </div>
+    ` : ''}
   `;
 }
 
@@ -2130,7 +2050,7 @@ async function generateDocx() {
     ['Revisión', 'Rev. #001'],
   ];
 
-  // Count estimated pages (Carátula + Temario + ~2pp Generalidades + 1p Descripción + 2pp Emergencia + 3pp Memoria Técnica + Croquis + Recomendaciones + Responsabilidad + DJ + Firmas)
+  // Count estimated pages
   const estimatedFojas = 8 + (c.extDistRows && c.extDistRows.length ? 1 : 0);
   caratulaRows.push(['N° Total de Fojas (estimado)', String(estimatedFojas)]);
 
@@ -2586,7 +2506,7 @@ async function generateDocx() {
           p('Asimismo, deberá mantener vigente la habilitación municipal y las condiciones descriptas en la presente Memoria Técnica. Cualquier modificación edilicia, cambio de uso o redistribución de materiales combustibles requerirá una nueva evaluación técnica.'),
           p('El incumplimiento de las normas de protección contra incendios podrá dar lugar a las sanciones previstas en la legislación vigente, sin perjuicio de la responsabilidad civil y penal que pudiere corresponder.'),
 
-          // === VIII) DECLARACIÓN JURADA ===
+          // === VII) DECLARACIÓN JURADA ===
           new Paragraph({ children: [new PageBreak()] }),
           heading('VII) DECLARACIÓN JURADA'),
           emptyLine(),
@@ -2594,7 +2514,7 @@ async function generateDocx() {
           emptyLine(),
           p(`Lugar y fecha: ${d.domicilio}, ${fecha}`),
 
-          // === IX) FIRMAS ===
+          // === VIII) FIRMAS ===
           new Paragraph({ children: [new PageBreak()] }),
           heading('VIII) FIRMAS'),
           emptyLine(),
